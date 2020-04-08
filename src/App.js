@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useAjax } from "./customHooks";
+import "./App.css";
+
+const NEWEST_500_ENDPOINT =
+  "https://hacker-news.firebaseio.com/v0/newstories.json";
 
 function App() {
+  const [storyIDs, loading, error] = useAjax(
+    NEWEST_500_ENDPOINT,
+    null,
+    "allStoryIDs"
+  );
+
+  const renderLoader = () => {
+    return <div className="main-loader">Fetching stories…</div>;
+  };
+
+  const renderError = () => {
+    return <div className="main-error">Error fetching stories.</div>;
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading ? renderLoader() : null}
+      {error ? renderError() : null}
+      {!loading && !error ? storyIDs : null}
     </div>
   );
 }
