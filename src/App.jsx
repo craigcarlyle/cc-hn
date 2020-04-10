@@ -1,5 +1,7 @@
 import React from "react";
-import { useAjax } from "./customHooks";
+import { HackerNewsList } from "./HackerNewsList";
+import { useAjax } from "./CustomHooks";
+
 import "./App.css";
 
 const NEWEST_500_ENDPOINT =
@@ -13,18 +15,26 @@ function App() {
   );
 
   const renderLoader = () => {
-    return <div className="main-loader">Fetching stories…</div>;
+    return (
+      <div className="main-loader" data-testid="main-loader">
+        Fetching stories...
+      </div>
+    );
   };
 
   const renderError = () => {
-    return <div className="main-error">Error fetching stories.</div>;
+    return (
+      <div className="main-error" data-testid="main-error">
+        Error fetching stories.
+      </div>
+    );
   };
 
   return (
     <div className="App">
       {loading ? renderLoader() : null}
       {error ? renderError() : null}
-      {!loading && !error ? storyIDs : null}
+      {!loading && !error ? <HackerNewsList storyIDs={storyIDs} /> : null}
     </div>
   );
 }
