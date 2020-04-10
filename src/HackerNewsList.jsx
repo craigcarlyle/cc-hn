@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { HackerNewsListItem } from "./HackerNewsListItem";
 import { debounce } from "./Helpers";
 
 const DEBOUNCE_TIME = 100;
@@ -51,7 +52,11 @@ function HackerNewsList(props) {
 
   return (
     <>
-      <ol>{storyIDs.map((storyID, index) => ({ index, storyID }))}</ol>
+      <ol>
+        {storyIDs.map((storyID, index) => (
+          <HackerNewsListItem key={index} storyID={storyID} />
+        ))}
+      </ol>
 
       {storyIDs.length === 500 ? renderEndOfList() : null}
     </>
