@@ -7,7 +7,7 @@ import "./HackerNewsListItem.css";
 const BASE_URL = "https://news.ycombinator.com/item?id=";
 
 function HackerNewsListItem(props) {
-  const [postData, loading, error] = useAjax(
+  const [postData, error, loading] = useAjax(
     `https://hacker-news.firebaseio.com/v0/item/${props.storyID}.json`,
     `${props.storyID}`
   );

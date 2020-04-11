@@ -8,7 +8,7 @@ const NEWEST_500_ENDPOINT =
   "https://hacker-news.firebaseio.com/v0/newstories.json";
 
 function App() {
-  const [storyIDs, loading, error] = useAjax(
+  const [storyIDs, error, loading] = useAjax(
     NEWEST_500_ENDPOINT,
     "allStoryIDs"
   );

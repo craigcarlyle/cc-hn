@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 
 export const useAjax = (endpoint, localDataName) => {
   const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(endpoint)
       .then((response) => {
@@ -28,10 +27,9 @@ export const useAjax = (endpoint, localDataName) => {
           setResults(cachedResults);
         } else {
           setError(true);
-          console.warn(`No cached result for: ${localDataName}`);
         }
       });
   }, [endpoint, localDataName]);
 
-  return [results, loading, error];
+  return [results, error, loading];
 };

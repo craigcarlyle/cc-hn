@@ -10,7 +10,7 @@ jest.mock("./helpers");
 
 describe("while loading", () => {
   it("renders the loader element", () => {
-    useAjax.mockReturnValue([null, true, null]);
+    useAjax.mockReturnValue([null, null, true]);
 
     const { getByTestId } = render(<HackerNewsListItem />);
     const loaderElement = getByTestId("list-item-loader");
@@ -23,7 +23,7 @@ describe("while loading", () => {
 
 describe("when an error is returned", () => {
   it("renders the error element", () => {
-    useAjax.mockReturnValue([null, null, true]);
+    useAjax.mockReturnValue([null, true, null]);
 
     const { getByTestId } = render(<HackerNewsListItem />);
     const errorElement = getByTestId("list-item-error");

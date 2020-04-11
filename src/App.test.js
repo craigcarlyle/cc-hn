@@ -13,7 +13,7 @@ configure({ adapter: new Adapter() });
 
 describe("while loading", () => {
   it("renders the loader element", () => {
-    useAjax.mockReturnValue([null, true, null]);
+    useAjax.mockReturnValue([null, null, true]);
 
     const { getByTestId } = render(<App />);
     const loaderElement = getByTestId("main-loader");
@@ -25,7 +25,7 @@ describe("while loading", () => {
 
 describe("when an error is returned", () => {
   it("renders the error element", () => {
-    useAjax.mockReturnValue([null, null, true]);
+    useAjax.mockReturnValue([null, true, null]);
 
     const { getByTestId } = render(<App />);
     const errorElement = getByTestId("main-error");
