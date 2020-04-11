@@ -10,7 +10,6 @@ const NEWEST_500_ENDPOINT =
 function App() {
   const [storyIDs, loading, error] = useAjax(
     NEWEST_500_ENDPOINT,
-    null,
     "allStoryIDs"
   );
 

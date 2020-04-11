@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-export const useAjax = (endpoint, defaultValue = {}, localDataName) => {
-  const [results, setResults] = useState(defaultValue);
+export const useAjax = (endpoint, localDataName) => {
+  const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
