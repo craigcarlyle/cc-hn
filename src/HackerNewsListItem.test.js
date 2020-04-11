@@ -2,7 +2,7 @@ import React from "react";
 import { render, cleanup } from "@testing-library/react";
 
 import { HackerNewsListItem } from "./HackerNewsListItem";
-import { useAjax } from "./CustomHooks";
+import { useAjax } from "./customHooks";
 import { convertUnixTimeToString } from "./helpers";
 
 jest.mock("./customHooks");
