@@ -1,6 +1,6 @@
 import React from "react";
 import { HackerNewsList } from "./HackerNewsList";
-import { useAjax } from "./CustomHooks";
+import { useAjax } from "./customHooks";
 
 import "./App.css";
 
