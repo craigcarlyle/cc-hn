@@ -9,12 +9,28 @@ import { range } from "./helpers";
 configure({ adapter: new Adapter() });
 
 describe("when the storyIDs are passed to the component", () => {
+  let initialIDs;
+
+  beforeAll(() => {
+    initialIDs = range(0, 499);
+  });
+
   it("populates the list with the first 10 IDs", () => {
-    const initialIDs = range(0, 499);
     const { getAllByTestId } = render(<HackerNewsList storyIDs={initialIDs} />);
     const storyListItemElements = getAllByTestId("list-item-loader");
 
     expect(storyListItemElements.length).toBe(10);
+  });
+
+  it("saves the initial storyIDs to localStorage", () => {
+    let localStorageSpy = jest.spyOn(Storage.prototype, "setItem");
+
+    mount(<HackerNewsList storyIDs={initialIDs} />);
+
+    expect(localStorageSpy).toHaveBeenCalledWith(
+      "currentStoryIDs",
+      JSON.stringify(range(0, 9))
+    );
   });
 });
 
