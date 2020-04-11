@@ -2,6 +2,8 @@ import React from "react";
 import { useAjax } from "./customHooks";
 import { convertUnixTimeToString } from "./helpers";
 
+import "./HackerNewsListItem.css";
+
 const BASE_URL = "https://news.ycombinator.com/item?id=";
 
 function HackerNewsListItem(props) {

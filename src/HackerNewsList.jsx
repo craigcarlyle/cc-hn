@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { HackerNewsListItem } from "./HackerNewsListItem";
 import { debounce } from "./helpers";
 
+import "./HackerNewsList.css";
+
 const DEBOUNCE_TIME = 100;
 
 function HackerNewsList(props) {
@@ -46,7 +48,9 @@ function HackerNewsList(props) {
 
   const renderEndOfList = () => {
     return (
-      <div className="message">No more Hacker News stories available.</div>
+      <div className="end-of-list-message">
+        No more Hacker News stories available.
+      </div>
     );
   };
 

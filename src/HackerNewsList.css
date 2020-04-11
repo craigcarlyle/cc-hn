@@ -1,0 +1,10 @@
+ol {
+  margin: 0 48px;
+  padding-left: 0;
+}
+
+div.end-of-list-message {
+  color: var(--dark-grey);
+  padding: 24px 0;
+  text-align: center;
+}
