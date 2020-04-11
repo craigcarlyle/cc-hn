@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { HackerNewsListItem } from "./HackerNewsListItem";
-import { debounce } from "./Helpers";
+import { debounce } from "./helpers";
 
 const DEBOUNCE_TIME = 100;
 

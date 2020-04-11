@@ -1,6 +1,6 @@
 import React from "react";
 import { useAjax } from "./customHooks";
-import { convertUnixTimeToString } from "./Helpers";
+import { convertUnixTimeToString } from "./helpers";
 
 const BASE_URL = "https://news.ycombinator.com/item?id=";
 
