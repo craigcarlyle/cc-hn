@@ -13,6 +13,10 @@ function HackerNewsList(props) {
 
   const [storyIDs, setStoryIDs] = useState(initialStories);
 
+  const saveStoriesToLoadStorage = (storyIDs) => {
+    localStorage.setItem("currentStoryIDs", JSON.stringify(storyIDs));
+  };
+
   const scrollListener = () => {
     const debouncedPositionCheck = debounce(() => {
       if (
@@ -26,13 +30,6 @@ function HackerNewsList(props) {
     debouncedPositionCheck();
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", scrollListener);
-    return () => {
-      window.removeEventListener("scroll", scrollListener);
-    };
-  });
-
   const setNext10Stories = () => {
     const lastStoryID = storyIDs.pop();
     const indexOfLastStoryID = props.storyIDs.indexOf(lastStoryID);
@@ -43,7 +40,7 @@ function HackerNewsList(props) {
 
     const newStoryIDList = [...storyIDs, ...next10StoryIDs];
     setStoryIDs(newStoryIDList);
-    localStorage.setItem("currentStoryIDs", JSON.stringify(newStoryIDList));
+    saveStoriesToLoadStorage(newStoryIDList);
   };
 
   const renderEndOfList = () => {
@@ -53,6 +50,16 @@ function HackerNewsList(props) {
       </div>
     );
   };
+
+  useEffect(() => {
+    // Save the story IDs to local storage for offline use.
+    saveStoriesToLoadStorage(initialStories);
+
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  });
 
   return (
     <>
