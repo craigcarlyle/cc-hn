@@ -11,3 +11,7 @@ export const convertUnixTimeToString = (unixTime) => {
   const jsDate = new Date(unixTime * 1000);
   return jsDate.toLocaleString();
 };
+
+export const range = (start, end, length = end - start + 1) => {
+  return Array.from({ length }, (_, i) => start + i);
+};
