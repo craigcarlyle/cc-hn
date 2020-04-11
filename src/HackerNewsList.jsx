@@ -52,7 +52,7 @@ function HackerNewsList(props) {
   };
 
   useEffect(() => {
-    // Save the story IDs to local storage for offline use.
+    // Save the initial story IDs to local storage for offline use.
     saveStoriesToLoadStorage(initialStories);
 
     window.addEventListener("scroll", scrollListener);
