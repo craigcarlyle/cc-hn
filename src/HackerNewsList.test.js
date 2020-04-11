@@ -4,7 +4,7 @@ import { mount, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 import { HackerNewsList } from "./HackerNewsList";
-import { range } from "./helpers";
+import { range } from "./testHelpers";
 
 configure({ adapter: new Adapter() });
 
